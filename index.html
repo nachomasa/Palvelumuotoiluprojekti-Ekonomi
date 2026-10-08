@@ -11,11 +11,6 @@
 html,body{margin:0;min-height:100%}
 body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
 .wrap{max-width:1000px;margin:0 auto;min-height:100vh;padding:24px 16px;display:flex;gap:40px;align-items:center;justify-content:center;flex-wrap:wrap}
-.intro{flex:1 1 320px;max-width:440px}
-.intro h1{font-family:Impact,"Arial Narrow",sans-serif;font-size:3rem;line-height:1;color:var(--m);margin:0;text-transform:uppercase;letter-spacing:1px}
-.intro h2{font-family:Impact,"Arial Narrow",sans-serif;color:var(--m);font-weight:400;margin:4px 0 16px;letter-spacing:1px}
-.tag{background:var(--m);color:#fff;padding:10px 14px;border-radius:6px;font-size:.9rem}
-.intro ul{padding-left:18px;line-height:1.7}
 .phone{width:340px;height:680px;border:10px solid #111;border-radius:38px;background:#fff;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(0,0,0,.3);flex:none}
 .top{background:var(--m);color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:600}
 .top button{background:rgba(255,255,255,.18);border:0;color:#fff;border-radius:8px;width:32px;height:30px;font-size:1rem;cursor:pointer}
@@ -46,10 +41,6 @@ input[type=range]{width:100%;accent-color:var(--m)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .chip{border:1px solid var(--m);color:var(--m);border-radius:14px;padding:3px 10px;font-size:.72rem;background:none;cursor:pointer}
 .chip.on{background:var(--m);color:#fff}
-.msg{display:flex;gap:8px;margin-bottom:10px;font-size:.82rem}
-.msg .av{font-size:1.6rem}
-.msg .b{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:7px 10px}
-.msg .b small{color:var(--m);font-weight:600;display:block}
 .wheelbox{position:relative;width:220px;height:220px;margin:6px auto 14px}
 .wheel{width:100%;height:100%;border-radius:50%;border:4px solid var(--m);transition:transform 4s cubic-bezier(.15,.7,.1,1);position:relative}
 .wheel i{position:absolute;left:50%;top:50%;transform-origin:0 0;font-style:normal;font-size:.62rem;font-weight:700;width:80px;text-align:right;color:#222}
@@ -57,16 +48,7 @@ input[type=range]{width:100%;accent-color:var(--m)}
 .ov{position:absolute;inset:0;background:#fff;z-index:3;overflow-y:auto;padding:16px}.toast{z-index:4;position:absolute;left:14px;right:14px;bottom:70px;background:#111;color:#fff;padding:10px 12px;border-radius:10px;font-size:.82rem;opacity:0;transition:.3s;pointer-events:none}
 .toast.show{opacity:1}
 .hide{display:none!important}
-@media (max-width:480px){.wrap{padding:0}.intro{display:none}.phone{width:100%;height:100vh;height:100dvh;border:0;border-radius:0}}
-header.site{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:10px 20px}
-header.site img{height:40px}header.site b{color:var(--m);font-family:Impact,sans-serif;letter-spacing:1px;font-size:1.2rem}
-header.site a{margin-left:auto;color:var(--m);text-decoration:none;font-size:.9rem;font-weight:600}
-.feat{max-width:1000px;margin:0 auto;padding:30px 16px 60px}
-.feat h2{font-family:Impact,sans-serif;color:var(--m);font-weight:400;letter-spacing:1px;text-transform:uppercase;border-left:10px solid var(--m);padding-left:12px}
-.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.fg div{border:1px solid var(--m);border-radius:8px;padding:16px}.fg h3{font-family:Impact,sans-serif;font-weight:400;letter-spacing:1px;text-transform:uppercase}
-.fg p{margin:0;font-size:.9rem;line-height:1.5}
-@media (max-width:480px){header.site,.feat{display:none}}
+@media (max-width:480px){.wrap{padding:0}.phone{width:100%;height:100vh;height:100dvh;border:0;border-radius:0}}
 .meta{font-size:.74rem;opacity:.85;display:flex;align-items:center;gap:6px}.th{cursor:pointer}.lk{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:3px 10px;cursor:pointer;font-size:.78rem;color:var(--tx)}.lk.on{background:var(--soft);border-color:var(--m);color:var(--m)}
 </style>
 </head>
@@ -131,7 +113,7 @@ menu:()=>`<p style="margin:0 0 12px">Moi, <b>${S.name}</b>! 👋</p><div class="
  <div class="tile big" onclick="go('chat')"><span>🐧</span>Dumppi chat</div></div>`,
 notif:()=>`<div class="card">🐧 <b>Dumppi sitsit!</b><br><small>Uudistettu ilmoitus</small></div>
  <div class="card">🕘 <b>Toimisto päivystää tänään 9–14.</b></div>
- <div class="card">📣 <b>Kaikki tiedotteet koottu ilmoitus­palstalle.</b></div>
+ <div class="card">📣 <b>Kaikki tiedotteet koottu ilmoituspalstalle.</b></div>
  <p style="font-size:.78rem;opacity:.7">Ilmoitukset-sivulta löytää ajankohtaista tietoa tulevista tapahtumista ja harjoittelupaikoista.</p>`,
 cal:()=>`<h3>Tulevat tapahtumat</h3>`+S.events.map(e=>`<div class="card row"><b style="color:var(--m);width:70px">${e[0]}</b><span>${e[1]}</span></div>`).join(''),
 set:()=>`<div class="card row"><span class="grow">Ilmoitukset</span><input type="checkbox" checked></div>
@@ -188,30 +170,36 @@ function likeR(id,k){const x=S.threads.find(y=>y.id===id).rep[k];x.liked=!x.like
 function reply(id){const i=$('#ci');if(!i.value.trim())return;const t=S.threads.find(x=>x.id===id);
  t.rep.push({a:who(),t:esc(i.value),likes:0,liked:0});go('chat');
  setTimeout(()=>{t.rep.push({a:'Anni',t:'Hyvä pointti! 👍',likes:0,liked:0});if(S.thr===id&&$('#ci'))go('chat')},1500)}
-const LIVE={mode:'demo',uid:'me',posts:{},
+const LIVE={mode:'demo',uid:'me',posts:{},likes:{},comments:{},
  refresh(){if(S.cur!=='chat')return;const a=document.activeElement;if(a&&a.tagName==='INPUT')return;go('chat')},
- post(p){LIVE.posts[LIVE.uid]={...p,ts:Date.now()};return Promise.resolve()},
- like(pid,on){const p=LIVE.posts[pid];p.likes=p.likes||{};on?p.likes[LIVE.uid]=true:delete p.likes[LIVE.uid];return Promise.resolve()},
- del(pid){delete LIVE.posts[pid];return Promise.resolve()}};
+ post(p){LIVE.posts[LIVE.uid]={...p,ts:Date.now()};delete LIVE.likes[LIVE.uid];delete LIVE.comments[LIVE.uid];return Promise.resolve()},
+ like(pid,on){const l=LIVE.likes[pid]=LIVE.likes[pid]||{};on?l[LIVE.uid]=true:delete l[LIVE.uid];return Promise.resolve()},
+ comment(pid,c){const m=LIVE.comments[pid]=LIVE.comments[pid]||{};m[LIVE.uid]={...c,ts:Date.now()};return Promise.resolve()},
+ del(pid){delete LIVE.posts[pid];delete LIVE.likes[pid];delete LIVE.comments[pid];return Promise.resolve()}};
 const TTL=600000;
 function mine(){const m=LIVE.posts[LIVE.uid];return m&&m.ts&&Date.now()-m.ts<TTL?m:null}
 function left(p){return Math.max(1,Math.ceil((p.ts+TTL-Date.now())/60000))}
-function lc(p){return Object.keys(p.likes||{}).length}
+function lc(k){return Object.keys(LIVE.likes[k]||{}).length}
+function cc(k){return Object.keys(LIVE.comments[k]||{}).length}
 function newBtn(){const m=mine();
  if(m)return `<button class="btn" style="margin-bottom:10px;background:#999" disabled>Sinulla on jo viesti (vanhenee ${left(m)} min)</button>`;
  return `<button class="btn" style="margin-bottom:10px" onclick="S.nt=!S.nt;go('chat')">${S.nt?'Peruuta':'＋ Uusi viesti'}</button>`}
 function liveList(){const n=Date.now();return Object.entries(LIVE.posts).filter(([k,p])=>p&&p.ts&&n-p.ts<TTL&&p.chan===S.chan).sort((a,b)=>b[1].ts-a[1].ts)}
-function liveCards(){return liveList().map(([k,p])=>`<div class="card th" style="border-color:var(--m)" onclick="S.thr='L:${esc(k)}';go('chat')"><b>${esc(p.title)}</b><div class="meta">${PS(22)} ${esc(p.name)} · ❤️ ${lc(p)} · 🔴 live, vanhenee ${left(p)} min</div></div>`).join('')}
+function liveCards(){return liveList().map(([k,p])=>`<div class="card th" style="border-color:var(--m)" onclick="S.thr='L:${esc(k)}';go('chat')"><b>${esc(p.title)}</b><div class="meta">${PS(22)} ${esc(p.name)} · ❤️ ${lc(k)} · 💬 ${cc(k)} · 🔴 ${left(p)} min</div></div>`).join('')}
 function liveThread(){const k=S.thr.slice(2),p=LIVE.posts[k];
  if(!p||!p.ts||Date.now()-p.ts>=TTL){S.thr=null;return '<p>Viesti on vanhentunut.</p><button class="btn" onclick="go(\'chat\')">Takaisin</button>'}
- const on=p.likes&&p.likes[LIVE.uid];
+ const on=LIVE.likes[k]&&LIVE.likes[k][LIVE.uid],cm=Object.values(LIVE.comments[k]||{}).sort((a,b)=>a.ts-b.ts),did=LIVE.comments[k]&&LIVE.comments[k][LIVE.uid];
  return `<button class="chip" onclick="S.thr=null;go('chat')">← Takaisin</button><h3 style="margin-top:10px">${esc(p.title)}</h3>
- <div class="card"><div class="meta">${PS(26)} <b>${esc(p.name)}</b> · vanhenee ${left(p)} min</div><p style="margin:8px 0">${esc(p.text||'')}</p><button class="lk ${on?'on':''}" onclick="likeLive('${esc(k)}')">❤️ ${lc(p)}</button></div>
- <p style="font-size:.74rem;opacity:.7">Jokainen voi lähettää vain yhden viestin, joten tähän ei voi vastata. Voit tykätä viestistä.</p>`}
-function likeLive(k){const p=LIVE.posts[k];if(!p)return;const on=!(p.likes&&p.likes[LIVE.uid]);LIVE.like(k,on).catch(()=>toast('Tykkäys epäonnistui'));if(LIVE.mode==='demo')go('chat')}
+ <div class="card"><div class="meta">${PS(26)} <b>${esc(p.name)}</b> · vanhenee ${left(p)} min</div><p style="margin:8px 0">${esc(p.text||'')}</p><button class="lk ${on?'on':''}" onclick="likeLive('${esc(k)}')">❤️ ${lc(k)}</button></div>
+ <b style="font-size:.8rem">Kommentit (${cm.length})</b>
+ ${cm.map(x=>`<div class="card"><div class="meta">${PS(24)} <b>${esc(x.name)}</b></div><p style="margin:6px 0">${esc(x.text)}</p></div>`).join('')}
+ ${did?'<p style="font-size:.74rem;opacity:.7">Olet jo kommentoinut tätä viestiä.</p>':`<div class="row"><input type="text" id="cmi" placeholder="Kirjoita kommentti…" style="margin:0" onkeydown="if(event.key==='Enter')addComment('${esc(k)}')"><button class="btn s" onclick="addComment('${esc(k)}')">➤</button></div><label style="font-size:.74rem;display:block;margin-top:8px"><input type="checkbox" id="an"> Kommentoi anonyymisti</label>`}`}
+function likeLive(k){if(!LIVE.posts[k])return;const on=!(LIVE.likes[k]&&LIVE.likes[k][LIVE.uid]);LIVE.like(k,on).catch(e=>toast('Tykkäys epäonnistui: '+(e.code||e.message)));if(LIVE.mode==='demo')go('chat')}
+async function addComment(k){const i=$('#cmi');if(!i||!i.value.trim())return;
+ try{await LIVE.comment(k,{name:who(),text:i.value.trim().slice(0,200)});toast('Kommentti lisätty')}catch(e){toast('Kommentointi epäonnistui: '+(e.code||e.message))}go('chat')}
 async function addT(){const a=$('#nti').value.trim(),b=$('#ntt').value.trim();if(!a||mine())return;
- try{await LIVE.post({name:who(),title:a.slice(0,80),text:b.slice(0,300),chan:S.chan});S.nt=false;toast('Viesti julkaistu 10 minuutiksi')}catch(e){toast('Viestin lähetys epäonnistui')}go('chat')}
-setInterval(()=>{const n=Date.now();for(const k in LIVE.posts){const p=LIVE.posts[k];if(p&&p.ts&&n-p.ts>=TTL+5000){LIVE.del(k).catch(()=>{});if(LIVE.mode==='demo')delete LIVE.posts[k]}}LIVE.refresh()},15000);
+ try{await LIVE.post({name:who(),title:a.slice(0,80),text:b.slice(0,300),chan:S.chan});S.nt=false;toast('Viesti julkaistu 10 minuutiksi')}catch(e){toast('Viestin lähetys epäonnistui: '+(e.code||e.message))}go('chat')}
+setInterval(()=>{const n=Date.now();for(const k in LIVE.posts){const p=LIVE.posts[k];if(p&&p.ts&&n-p.ts>=TTL+5000)LIVE.del(k).catch(()=>{})}LIVE.refresh()},15000);
 let rot=0;
 function spin(){S.spun=true;const P=['Kahvi ☕','Tarra','+20 p','Pingviini 🐧','+50 p','Kuppi'];
  const k=Math.floor(Math.random()*6);rot+=360*5+(360-(k*60+30));
@@ -221,17 +209,21 @@ function spin(){S.spun=true;const P=['Kahvi ☕','Tarra','+20 p','Pingviini 🐧
 <script type="module">
 const cfg={apiKey:"AIzaSyBg3oRuRVpwRlFvSxvhQavrxc4FrHioXng",authDomain:"palvelumuotoiluprojekti.firebaseapp.com",databaseURL:"https://palvelumuotoiluprojekti-default-rtdb.europe-west1.firebasedatabase.app",projectId:"palvelumuotoiluprojekti",storageBucket:"palvelumuotoiluprojekti.firebasestorage.app",messagingSenderId:"711705476345",appId:"1:711705476345:web:b6a9fe2683463c1e9ab628"};
 try{
- const V='10.12.2',B='https://www.gstatic.com/firebasejs/'+V+'/';
+ const B='https://www.gstatic.com/firebasejs/10.12.2/';
  const {initializeApp}=await import(B+'firebase-app.js');
  const {getAuth,signInAnonymously}=await import(B+'firebase-auth.js');
- const {getDatabase,ref,onValue,set,remove,serverTimestamp}=await import(B+'firebase-database.js');
+ const {getDatabase,ref,onValue,set,remove,update,serverTimestamp}=await import(B+'firebase-database.js');
  const app=initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
  const cred=await signInAnonymously(auth),uid=cred.user.uid;
+ const gone=k=>({['posts/'+k]:null,['likes/'+k]:null,['comments/'+k]:null});
+ const mk={post:p=>update(ref(db),{['posts/'+uid]:{...p,ts:serverTimestamp()},['likes/'+uid]:null,['comments/'+uid]:null}),
+  like:(pid,on)=>on?set(ref(db,'likes/'+pid+'/'+uid),true):remove(ref(db,'likes/'+pid+'/'+uid)),
+  comment:(pid,c)=>set(ref(db,'comments/'+pid+'/'+uid),{...c,ts:serverTimestamp()}),
+  del:pid=>update(ref(db),gone(pid))};
  await new Promise((ok,no)=>{const t=setTimeout(()=>no(new Error('timeout')),8000);
-  onValue(ref(db,'posts'),s=>{clearTimeout(t);LIVE.posts=s.val()||{};LIVE.mode='fb';LIVE.uid=uid;LIVE.refresh();ok()},e=>{clearTimeout(t);no(e)})});
- LIVE.post=p=>set(ref(db,'posts/'+uid),{...p,ts:serverTimestamp()});
- LIVE.like=(pid,on)=>on?set(ref(db,'posts/'+pid+'/likes/'+uid),true):remove(ref(db,'posts/'+pid+'/likes/'+uid));
- LIVE.del=pid=>remove(ref(db,'posts/'+pid));
+  onValue(ref(db,'posts'),s=>{clearTimeout(t);Object.assign(LIVE,mk);LIVE.posts=s.val()||{};LIVE.mode='fb';LIVE.uid=uid;LIVE.refresh();ok()},e=>{clearTimeout(t);no(e)})});
+ onValue(ref(db,'likes'),s=>{LIVE.likes=s.val()||{};LIVE.refresh()},()=>{});
+ onValue(ref(db,'comments'),s=>{LIVE.comments=s.val()||{};LIVE.refresh()},()=>{});
 }catch(e){console.warn('Firebase ei käytössä, demo-tila',e);LIVE.mode='demo'}
 </script>
 </body>
