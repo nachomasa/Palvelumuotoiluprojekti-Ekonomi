@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "posts": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && ((newData.exists() && auth.uid === $uid && (!data.exists() || data.child('ts').val() < now - 600000)) || (!newData.exists() && data.child('ts').val() < now - 600000))",
+        ".validate": "newData.hasChildren(['name','title','text','chan','ts']) && !newData.child('likes').exists()",
+        "name":  { ".validate": "newData.isString() && newData.val().length <= 30" },
+        "title": { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 80" },
+        "text":  { ".validate": "newData.isString() && newData.val().length <= 300" },
+        "chan":  { ".validate": "newData.isString() && newData.val().length <= 30" },
+        "ts":    { ".validate": "newData.val() === now" },
+        "likes": {
+          "$liker": {
+            ".write": "auth != null && auth.uid === $liker && root.child('posts').child($uid).child('ts').exists()",
+            ".validate": "newData.val() === true"
+          }
+        }
+      }
+    }
+  }
+}
